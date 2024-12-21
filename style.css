@@ -1,0 +1,421 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+
+* {
+    font-family: "Inter", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;    
+    background : linear-gradient(to right, #FF5F6D, #FFC371);
+}
+
+.left-sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 100vh;
+    background: #FF5F6D;
+    padding: 20px;
+    color: #fff;
+    box-shadow : 0 0 128px 0 rgba(0, 0, 0, 0.1), 0 32px 64px -48px rgba(0, 0, 0, 0.5);
+    transition : all 0.2s ease;
+}
+
+.left-sidebar h1{
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #fff;
+    opacity: 0.8;
+}
+
+.left-sidebar p{
+    font-size: 1.15rem;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    color: #fff;
+    opacity: 0.8;
+}
+
+
+
+body.show-flameBot .left-sidebar{
+    transform: translateX(-300px);
+}
+
+
+
+#chat-toggler{
+    position: fixed;
+    bottom: 30px;
+    right: 35px;
+    width: 50px;
+    height: 50px;
+    background: #FF5F6D;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    box-shadow : 0 0 128px 0 rgba(0, 0, 0, 0.1), 0 32px 64px -48px rgba(0, 0, 0, 0.5);
+    transition : all 0.2s ease;
+}
+
+body.show-flameBot #chat-toggler {
+    transform: rotate(90deg);
+}
+
+#chat-toggler span{
+    position: absolute;
+    color: #fff;
+}
+body.show-flameBot #chat-toggler span:first-child,
+#chat-toggler span:last-child{
+    opacity: 0;
+}
+
+body.show-flameBot #chat-toggler span:last-child{
+    opacity: 1;
+}
+
+
+
+
+.flamebot-popup {
+    position: fixed;
+    height: 600px;
+    position: fixed;
+    bottom: 80px;
+    right: 80px;
+    max-width: 420px;
+    min-width: 420px;
+    margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transform-origin: bottom right;
+    transform: scale(0.2);
+    width: 420px;
+    overflow: hidden;
+    pointer-events: none;
+    opacity: 0;
+    background: #fff;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow : 0 0 128px 0 rgba(0, 0, 0, 0.1), 0 32px 64px -48px rgba(0, 0, 0, 0.5);
+    transition: all 0.1s ease;
+
+}
+
+
+body.show-flameBot .flamebot-popup{
+    pointer-events: auto;
+    opacity : 1;
+    transform : scale(1);
+}
+.flamebot-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 22px;
+    background: #FF5F6D;
+    color: #fff;
+}
+
+.flamebot-header .flamebot-info {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.flamebot-info .flamebot-logo {
+    width: 48px;
+    height: 48px;
+    fill: #FF5F6D;
+    flex-shrink: 0;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FF5F6D;
+}
+
+.flamebot-info .logo-text {
+    color : #fff;
+    font-size: 1.31rem;
+    font-weight: 600;
+}
+
+
+
+.flamebot-header #flamebot-close {
+    margin-right: -10px;
+    padding-top: 2px;
+    border : none;
+    outline : none;
+    font-size: 1.31rem;
+    background: #fff ;
+    color : #FF5F6D;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition : 0.2s ease;
+}
+
+.flamebot-header #flamebot-close:hover {
+    background: #ee959c;
+    color: #fff;
+}
+
+.flamebot-body {
+    padding: 25px 22px;
+    display: flex;
+    gap: 20px;
+    height: 460px;
+    margin-bottom: 82px;
+    overflow-y: auto;
+    flex-direction: column;
+}
+.flamebot-body .message {
+    display: flex;
+    align-items: center;
+    gap : 15px;
+} 
+
+.flamebot-body .bot-message .bot-avatar {
+    width: 48px;
+    height: 48px;
+    fill: #fff;
+    align-self: flex-end;
+    flex-shrink: 0;
+    margin-bottom: 2px;
+    background: #FF5F6D;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flamebot-body .message .message-text {
+    color: #fff;
+    padding: 12px 18px;
+    border-radius: 0px 8px 8px 8px;
+    max-width: 250px;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+.flamebot-body .bot-message.thinking .message-text {
+    padding: 2px 16px;
+}
+
+.flamebot-body .bot-message .message-text {
+    background: #ee959c;
+    border-radius: 13px 13px 13px 3px;
+    padding: 12px 18px;
+}
+.flamebot-body .user-message .message-text {
+    background: #FF5F6D;
+    border-radius: 13px 13px 3px 13px;
+    padding: 12px 18px;
+}
+.flamebot-body .user-message{
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+
+.flamebot-body .bot-message .thinking-indicator {
+    display: flex;
+    gap: 4px;
+    padding-block: 15px;
+}
+
+.flamebot-body .bot-message .thinking-indicator .dot {
+    width: 10px;
+    height: 10px;
+    opacity: 0.7;
+    border-radius: 50%;
+    background: #fff ;
+    animation : dotPulse 1.8s ease-in-out infinite;
+}
+
+.flamebot-body .bot-message .thinking-indicator .dot:nth-child(1) {
+    animation-delay: 0.2s;
+}
+.flamebot-body .bot-message .thinking-indicator .dot:nth-child(2) {
+    animation-delay: 0.3s;
+}
+.flamebot-body .bot-message .thinking-indicator .dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes dotPulse {
+    0%, 44% {
+        transform : translateY(0);
+    }
+    28% {
+        opacity: 0.4;
+        transform : translateY(-4px);
+    }
+    44% {
+        opacity: 0.2;
+    }
+}
+
+.chat-footer {
+    position: absolute;
+    bottom: 0;
+    width : 100%;
+    background: #fff;
+    padding : 15px 22px 20px;
+    left: 0;
+}
+
+.chat-footer .chat-form {
+    display: flex;
+    position: relative;
+    gap: 10px;
+    align-items: center;
+    outline : 1px solid #CCCCE5;
+    border-radius: 32px;
+}
+
+.chat-footer .chat-form:focus-within {
+    outline: 2px solid #FF5F6D;
+}
+
+.chat-form .message-input{
+    border: none;
+    outline: none;
+    height: 47px;
+    width: 100%;
+    resize: none;
+    font-size: 0.95rem;
+    padding: 11px 13px 18px;
+    border-radius: inherit;
+}
+
+.chat-form .chat-controls {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: 2px;
+    margin-right: 4px;
+    flex-shrink: 0; 
+}
+
+.chat-form .chat-controls button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FF5F6D;
+    font-size: 1.15rem;
+    background: #fff;
+    transition : 0.2s ease;
+
+}
+
+
+.chat-form .chat-controls button:hover {
+    background: #FF5F6D;
+    color: #fff;
+}
+
+.chat-form .chat-controls #send-message {
+    background: #FF5F6D;
+    display: none;
+    color: #fff;
+}
+
+.chat-form .message-input:valid ~ .chat-controls #send-message{
+    display: block;
+}
+
+.chat-form .chat-controls #send-message:hover {
+    background: #ee959c;
+}
+
+.flamebot-body .user-message .attachment {
+    width: 50%;
+    margin-top: -7px;
+    border-radius: 13px 3px 13px 13px;
+}
+
+.chat-form .file-upload-wrapper {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.chat-form .file-upload-wrapper :where(img,button){
+    position: absolute;
+}
+
+.chat-form .file-upload-wrapper img {
+    display: block;
+    width : 100%;
+    height : 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.chat-form .file-upload-wrapper #file-cancel {
+    color: #fff;
+    background: #FF5F6D;
+    border-radius: 50%;
+    display: none;
+}
+
+.chat-form .file-upload-wrapper :where(img,#file-cancel),
+.chat-form .file-upload-wrapper.file-uploaded #file-upload {
+    display: none;
+}
+
+.chat-form .file-upload-wrapper.file-uploaded img,
+.chat-form .file-upload-wrapper.file-uploaded:hover #file-cancel {
+    display: block;
+}
+
+em-emoji-picker {
+    position: absolute;
+    left : 50%;
+    top : -335px;
+    width : 100%;
+    max-width: 350px;
+    max-height: 330px;
+    visibility: hidden;
+    transform: translateX(-50%);
+}
+
+body.show-emoji-picker em-emoji-picker {
+    visibility: visible;
+}

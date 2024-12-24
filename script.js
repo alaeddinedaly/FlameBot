@@ -8,7 +8,7 @@ const flameBotToggler =  document.querySelector('#chat-toggler');
 const closeChatBot = document.querySelector('#flamebot-close');
 
 // API
-const API_KEY = `TYPE-YOUR-API-KEY-HERE`
+const API_KEY = `AIzaSyCw3Z2Zn0QwWMreBoqYjVF0DSfQP3Z1I4o`
 const API_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
 
 const dataUser = {
